@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Inlämningsuppgift1
 {
@@ -7,7 +8,10 @@ namespace Inlämningsuppgift1
     {
         static void Main(string[] args)
         {
+            Console.Title = "MagicCalculator";
+
             String end = "yes";
+            List<int> sumList = new List<int>();
 
             while (end != "no")
             {
@@ -18,46 +22,32 @@ namespace Inlämningsuppgift1
                 String o2 = Console.ReadLine();
 
                 Console.Write("> Enter the first term: ");
-                String t1 = Console.ReadLine();
+                String nbr1 = Console.ReadLine();
 
                 Console.Write("> Enter the second term: ");
-                String t2 = Console.ReadLine();
+                String nbr2 = Console.ReadLine();
 
                 Console.Write("> Enter the third term: ");
-                String t3 = Console.ReadLine();
+                String nbr3 = Console.ReadLine();
 
-                int t1Int = Convert.ToInt32(t1);
-                int t2Int = Convert.ToInt32(t2);
-                int t3Int = Convert.ToInt32(t3);
-                int sum;
+                int t1Int = Convert.ToInt32(nbr1);
+                int t2Int = Convert.ToInt32(nbr2);
+                int t3Int = Convert.ToInt32(nbr3);
+                int partSum; // första uträkningen 
+                int sum; // slutgiltga summan 
 
-                List<int> sumList = new List<int>();
-
-                if (o1 == "+" && o2 == "+")
-                {
-                    sum = (t1Int + t1Int) + t3Int;
-                    MagicTextEquation(o1, o2, t1, t2, t3, sum);
-                    MagicTextSum(sum);
-                    sumList.Add(sum);
-                }
-
-                else if (o1 == "-" && o2 == "+")
-                {
-                    sum = (t1Int - t1Int) + t3Int;
-                    MagicTextEquation(o1, o2, t1, t2, t3, sum);
-                    MagicTextSum(sum);
-                    sumList.Add(sum);
-                }
+                partSum = Operator1(t1Int, t2Int, o1); 
+                sum = Operator2(partSum, t3Int, o2);
+                MagicTextEquation(o1, o2, nbr1, nbr2, nbr3, sum);
+                MagicTextSum(sum);
+                sumList.Add(sum);
 
                 Console.Write("> Do you want to continue? 1. yes 2. no: ");
                 end = Console.ReadLine();
 
             }
 
-
-
-
-
+            Console.WriteLine("> the value of all your equations is: " + sumList.Sum());
 
 
         }
@@ -87,6 +77,26 @@ namespace Inlämningsuppgift1
         {
             Console.WriteLine("> " + t1 + " " + o1 + " " + t2 + " " + o2 + " " + t3 + " " + "= " + sum);
 
+        }
+
+        static int Operator1(int nbr1, int nbr2, string op1)
+        {
+            if (op1 == "+") return nbr1 + nbr2;
+            if (op1 == "-") return nbr1 - nbr2;
+            if (op1 == "*") return nbr1 * nbr2;
+            if (op1 == "/") return nbr1 / nbr2;
+
+           throw new ArgumentException("> Specify a valid operator", "op");
+        }
+
+        static int Operator2(int sum, int nbr3, string op2)
+        {
+            if (op2 == "+") return sum + nbr3;
+            if (op2 == "-") return sum - nbr3;
+            if (op2 == "*") return sum * nbr3;
+            if (op2 == "/") return sum / nbr3;
+
+            throw new ArgumentException("> Specify a valid operator", "op");
         }
     }
 
