@@ -38,7 +38,7 @@ namespace Inlämningsuppgift1
 
                 partSum = Operator1(t1Int, t2Int, o1); 
                 sum = Operator2(partSum, t3Int, o2);
-                MagicTextEquation(o1, o2, nbr1, nbr2, nbr3, sum);
+                MagicTextEquation(o1, o2, nbr1, nbr2, nbr3, sum); 
                 MagicTextSum(sum);
                 sumList.Add(sum);
 
@@ -82,9 +82,9 @@ namespace Inlämningsuppgift1
         static int Operator1(int nbr1, int nbr2, string op1)
         {
             if (op1 == "+") return nbr1 + nbr2;
-            if (op1 == "-") return nbr1 - nbr2;
-            if (op1 == "*") return nbr1 * nbr2;
-            if (op1 == "/") return nbr1 / nbr2;
+            else if (op1 == "-") return nbr1 - nbr2;
+            else if (op1 == "*") return nbr1 * nbr2;
+            else if (op1 == "/") return nbr1 / nbr2;
 
            throw new ArgumentException("> Specify a valid operator", "op");
         }
@@ -92,9 +92,9 @@ namespace Inlämningsuppgift1
         static int Operator2(int sum, int nbr3, string op2)
         {
             if (op2 == "+") return sum + nbr3;
-            if (op2 == "-") return sum - nbr3;
-            if (op2 == "*") return sum * nbr3;
-            if (op2 == "/") return sum / nbr3;
+            else if (op2 == "-") return sum - nbr3;
+            else if (op2 == "*") return sum * nbr3;
+            else if (op2 == "/") return sum / nbr3;
 
             throw new ArgumentException("> Specify a valid operator", "op");
         }
