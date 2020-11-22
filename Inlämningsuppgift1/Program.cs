@@ -30,14 +30,14 @@ namespace Inlämningsuppgift1
                 Console.Write("> Enter the third term: ");
                 String nbr3 = Console.ReadLine();
 
-                int t1Int = Convert.ToInt32(nbr1);
-                int t2Int = Convert.ToInt32(nbr2);
-                int t3Int = Convert.ToInt32(nbr3);
+                int nbr1Int = Convert.ToInt32(nbr1);
+                int nbr2Int = Convert.ToInt32(nbr2);
+                int nbr3Int = Convert.ToInt32(nbr3);
                 int partSum; // första uträkningen 
                 int sum; // slutgiltga summan 
 
-                partSum = Operator1(t1Int, t2Int, o1); 
-                sum = Operator2(partSum, t3Int, o2);
+                partSum = Operator1(nbr1Int, nbr2Int, o1); 
+                sum = Operator2(partSum, nbr3Int, o2);
                 MagicTextEquation(o1, o2, nbr1, nbr2, nbr3, sum); 
                 MagicTextSum(sum);
                 sumList.Add(sum);
